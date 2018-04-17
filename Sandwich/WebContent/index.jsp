@@ -9,8 +9,17 @@
 	<script type="text/javascript" src="sandwich.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Available sandwiches</title>
+<style type="text/css">
+#div1{
+background-color: #E00049;
+height: 110px;
+}
+</style>
 </head>
 <header>
+<div id="div1">
+<img src="logo.png" width="300" height="98">
+</div>
 </header>
 <body onload="getAvailableSandwiches()">
 <h2>Sandwiches</h2>

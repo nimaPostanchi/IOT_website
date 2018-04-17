@@ -10,9 +10,7 @@ function getSandwichCallBack(){
 	if (randomSandwichRequest.status == 200) {
 		if (randomSandwichRequest.readyState == 4) {
 			var serverRsponse = JSON.parse(randomSandwichRequest.responseText);
-			console.log(serverRsponse)
-			alert(serverRsponse);
-//			var sandwich = serverResponse.sandwich;
+			console.log(serverRsponse);
 			
 			var sandwichDiv = document.getElementById("avalaible");
 			var sandwichParagraph = sandwichDiv.childNodes[0];

@@ -17,7 +17,9 @@ public class SandwichRepository {
 	}
 	
 	public void reduce(){
+		if (sandwich != 0) {			
 		setSandwich(sandwich -1);
+		}
 	}
 
 }
