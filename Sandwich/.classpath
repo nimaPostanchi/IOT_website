@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/nima/Documents/workspace/Chat_Application/WebContent/WEB-INF/lib/jackson-databind-2.7.4.jar"/>
 	<classpathentry kind="lib" path="/Users/nima/Documents/workspace/GTW_Week01_Ajax_Demo4_SimpleExample_Quotes_JSONwithJackson/WebContent/WEB-INF/lib/jackson-core-2.7.4.jar"/>
+	<classpathentry kind="lib" path="/Users/nima/Desktop/UCLL/Sem5/Web3/Jars/postgresql-9.4.1211.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

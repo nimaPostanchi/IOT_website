@@ -29,7 +29,6 @@ public class Controller extends HttpServlet {
      */
     public Controller() {
         super();
-        sandwichRepository = new SandwichRepository(null);
     }
     
 	@Override
@@ -56,10 +55,9 @@ public class Controller extends HttpServlet {
 //		int sandwich = sandwichRepository.getSandwich();
 //		String js = this.toJSON(sandwich);
 //		response.getWriter().write(js);
-		Sandwich sandwich = new Sandwich(10, "Veggie");
-		sandwichRepository.update(sandwich);
-		int i = sandwichRepository.get("Veggie");
-		String json = this.toJSON(i);
+		Sandwich sandwich = sandwichRepository.get("kaas-hesp");
+//		int i = sandwichRepository.get("Veggie");
+		String json = this.toJSON(sandwich);
 		response.getWriter().write(json);
 	}
 
@@ -75,6 +73,12 @@ public class Controller extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		String s = Integer.toString(sandwich);
 		return mapper.writeValueAsString(s);
+	}
+	
+	public String toJSON (Sandwich sandwich) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+//		String s = Integer.toString(sandwich);
+		return mapper.writeValueAsString(mapper);
 	}
 
 }
