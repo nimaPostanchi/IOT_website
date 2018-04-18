@@ -1,6 +1,10 @@
 package sandwich;
 
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Properties;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import db.SandwichRepository;
 
 /**
  * Servlet implementation class Controller
@@ -23,19 +29,38 @@ public class Controller extends HttpServlet {
      */
     public Controller() {
         super();
-        sandwichRepository = new SandwichRepository();
+        sandwichRepository = new SandwichRepository(null);
     }
+    
+	@Override
+	public void init() throws ServletException{
+		super.init();
+		
+		ServletContext context = getServletContext();
+		Properties properties = new Properties();
+		Enumeration<String> parameterNames = context.getInitParameterNames();
+		while(parameterNames.hasMoreElements()){
+			String propertyName = parameterNames.nextElement();
+			properties.setProperty(propertyName, context.getInitParameter(propertyName));
+		}
+        sandwichRepository = new SandwichRepository(properties);
+	}
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		sandwichRepository.reduce();
-		int sandwich = sandwichRepository.getSandwich();
-		String js = this.toJSON(sandwich);
-		response.getWriter().write(js);
-//		response.getWriter().write("Hoi");
+//		sandwichRepository.reduce();
+//		int sandwich = sandwichRepository.getSandwich();
+//		String js = this.toJSON(sandwich);
+//		response.getWriter().write(js);
+		Sandwich sandwich = new Sandwich(10, "Veggie");
+		sandwichRepository.update(sandwich);
+		int i = sandwichRepository.get("Veggie");
+		String json = this.toJSON(i);
+		response.getWriter().write(json);
 	}
 
 	/**

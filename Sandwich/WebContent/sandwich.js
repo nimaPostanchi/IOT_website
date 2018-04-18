@@ -10,9 +10,9 @@ function getSandwichCallBack(){
 	if (randomSandwichRequest.status == 200) {
 		if (randomSandwichRequest.readyState == 4) {
 			var serverRsponse = JSON.parse(randomSandwichRequest.responseText);
-			console.log(serverRsponse);
+//			console.log(serverRsponse);
 			
-			var sandwichDiv = document.getElementById("avalaible");
+			var sandwichDiv = document.getElementById("available");
 			var sandwichParagraph = sandwichDiv.childNodes[0];
 			
 			if (sandwichParagraph == null) {
